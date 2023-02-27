@@ -89,3 +89,29 @@ const questions = [
     name: "license",
   },
 ];
+
+// store the type of file to be generated in a variable
+const fileName = "README.md";
+
+// function to write README file
+const writeToFile = (fileName, data) => {
+  console.log(data);
+
+  // To store generateMarkdown in a variable
+  const READMETemplate = generateMarkdown(data);
+
+  fs.writeFile(fileName, READMETemplate, (error) =>
+    error ? console.error(error) : console.log(`Success!`)
+  );
+};
+
+// function to initialize program
+const init = () => {
+  // Calling inquirer to prompt the user quesions about the README file to be generated.
+  inquirer.prompt(questions).then((data) => {
+    writeToFile(fileName, data);
+  });
+};
+
+// function call to initialize program
+init();
