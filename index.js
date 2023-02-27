@@ -89,27 +89,3 @@ const questions = [
     name: "license",
   },
 ];
-
-const fileName = "README.md";
-
-// function to write README file
-function writeToFile(fileName, data) {
-  console.log(data);
-
-  const READMETemplate = generateMarkdown(data);
-
-  fs.writeFile(fileName, READMETemplate, (error) =>
-    error ? console.error(error) : console.log(`Success!`)
-  );
-}
-
-// function to initialize program
-function init() {
-  // Calling inquirer to prompt the user quesions about the README file to be generated.
-  inquirer.prompt(questions).then((data) => {
-    writeToFile(fileName, data);
-  });
-}
-
-// function call to initialize program
-init();
